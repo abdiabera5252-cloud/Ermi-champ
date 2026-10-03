@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ermiyas Zewude | Online Fitness & Bodybuilding Coaching</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            green: '#1b4d3e',
+                            greenHover: '#236350',
+                            gold: '#d4af37',
+                            dark: '#080a09',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .hero-container {
+            position: relative;
+            background-color: #080a09;
+        }
+
+        /* Full Hero Background Layer blending the athlete photo directly into the section */
+        .hero-bg-layer {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: right 15% center;
+            background-repeat: no-repeat;
+            opacity: 0.85;
+            filter: contrast(110%) brightness(90%);
+        }
+
+        /* Overlay Gradients to keep left side text crystal clear and create the gold ambient backlight on the right */
+        .hero-overlay-gradient {
+            position: absolute;
+            inset: 0;
+            background: 
+                /* Dark overlay on left for high contrast text readability */
+                linear-gradient(to right, #070a08 0%, rgba(7, 10, 8, 0.95) 40%, rgba(7, 10, 8, 0.6) 65%, rgba(7, 10, 8, 0.2) 100%),
+                /* Golden radial glow on right behind athlete arms pose */
+                radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.25) 0%, transparent 60%),
+                /* Dark bottom fade for seamless transition */
+                linear-gradient(to top, #080a09 0%, transparent 25%);
+        }
+
+        /* Main typography stroke & depth matching screenshot */
+        .text-impact {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 0.01em;
+            text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #080a09;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1b4d3e;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-[#080a09] text-white font-sans antialiased selection:bg-emerald-600 selection:text-white min-h-screen flex flex-col justify-between relative overflow-x-hidden">
+
+    <header class="fixed top-0 left-0 w-full z-40 px-6 sm:px-12 py-5 backdrop-blur-md bg-black/40 border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Brand Logo / Name -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full border-2 border-amber-500/80 overflow-hidden shadow-lg shadow-amber-500/10 group-hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&q=80&w=200" alt="Ermiyas Zewude Avatar" class="w-full h-full object-cover">
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold tracking-wider text-base sm:text-lg leading-none uppercase font-display text-white group-hover:text-amber-400 transition-colors">ERMIYAS ZEWUDE</span>
+                    <span class="text-xs text-emerald-400 font-medium tracking-widest uppercase">IFBB Pro & Fitness Coach</span>
+                </div>
+            </a>
+
+            <!-- Social Links & Contact -->
+            <div class="flex items-center gap-4 sm:gap-6">
+                <a href="https://www.tiktok.com/@ermiyaszewude" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-gray-200 hover:text-white transition-all hover:scale-110" title="TikTok Profile">
+                    <i class="fa-brands fa-tiktok text-sm"></i>
+                </a>
+                <a href="https://instagram.com/ermiyaszewude" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-gray-200 hover:text-white transition-all hover:scale-110" title="Instagram Profile">
+                    <i class="fa-brands fa-instagram text-sm"></i>
+                </a>
+                <button onclick="openModal('intakeModal')" class="hidden sm:flex items-center gap-2 bg-emerald-950/80 hover:bg-emerald-900 border border-emerald-500/40 text-emerald-300 px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all shadow-lg hover:shadow-emerald-900/40">
+                    <i class="fa-solid fa-phone text-xs"></i> 0920713435
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative min-h-screen w-full flex items-center hero-container pt-28 pb-20 px-6 sm:px-12 lg:px-20 overflow-hidden">
+        
+        <!-- Background Athlete Image Layer -->
+        <div class="hero-bg-layer"></div>
+        
+        <!-- Dark and Gold Atmospheric Gradient Overlays -->
+        <div class="hero-overlay-gradient"></div>
+
+        <!-- Main Hero Content Container -->
+        <div class="max-w-7xl w-full mx-auto relative z-20 my-auto">
+            <div class="max-w-3xl flex flex-col items-start text-left space-y-6">
+                
+                <!-- Badge Tag (Matches Screenshot) -->
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-sm border border-white/15 shadow-md">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="text-xs sm:text-sm font-semibold tracking-[0.18em] text-gray-200 uppercase">
+                        ONLINE COACHING WITH ERMIYAS ZEWUDE
+                    </span>
+                </div>
+
+                <!-- Main Headline (Matches Screenshot) -->
+                <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase text-white leading-[0.92] tracking-tight font-display text-impact">
+                    REAL TRAINING.<br/>
+                    <span class="text-white">REAL RESULTS..</span>
+                </h1>
+
+                <!-- Body Subtext (Matches Screenshot) -->
+                <p class="text-gray-200 text-base sm:text-lg md:text-xl font-normal leading-relaxed max-w-2xl pt-1 drop-shadow-md">
+                    I'll create a training and nutrition plan built for your goals, your schedule, and your lifestyle, and I'll guide you every step of the way.
+                </p>
+
+                <!-- Call To Action Buttons (Exact Match to Screenshot) -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4 w-full sm:w-auto">
+                    <!-- Green Button -->
+                    <button onclick="openModal('intakeModal')" class="group px-8 py-4 bg-[#1b4d3e] hover:bg-[#236350] text-white font-bold text-xs sm:text-sm tracking-widest uppercase rounded-lg shadow-2xl shadow-emerald-950/80 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-3 border border-emerald-500/30">
+                        <span>START YOUR TRANSFORMATION</span>
+                        <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+
+                    <!-- White Button -->
+                    <button onclick="openModal('resourceModal')" class="group px-8 py-4 bg-[#eff3f1] hover:bg-white text-gray-900 font-bold text-xs sm:text-sm tracking-widest uppercase rounded-lg shadow-xl transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2.5">
+                        <i class="fa-solid fa-gift text-emerald-800 text-sm group-hover:scale-110 transition-transform"></i>
+                        <span>GET YOUR FREE RESOURCES</span>
+                    </button>
+                </div>
+
+                <!-- Competition Badge -->
+                <a href="https://barbear-competatior.onrender.com" target="_blank" class="pt-4 inline-flex items-center gap-2 text-xs text-amber-400/90 hover:text-amber-300 transition-colors font-medium">
+                    <i class="fa-solid fa-award"></i>
+                    <span class="underline underline-offset-4">Barbear Competition Athlete & Official Trainer</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Scroll Indicator (Matches Screenshot Bottom Center) -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-30 opacity-80 hover:opacity-100 transition-opacity cursor-pointer" onclick="scrollToDetails()">
+            <span class="text-[10px] tracking-[0.25em] font-medium text-gray-300 uppercase">SCROLL</span>
+            <i class="fa-solid fa-arrow-down text-gray-300 text-sm animate-bounce-slow"></i>
+        </div>
+    </main>
+
+    <section id="details" class="bg-[#0b0f0d] py-20 px-6 sm:px-12 border-t border-white/5 relative z-20">
+        <div class="max-w-6xl mx-auto text-center space-y-12">
+            <h2 class="text-3xl sm:text-4xl font-display uppercase tracking-wider text-white">Why Train With <span class="text-emerald-400">Ermiyas?</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <div class="bg-white/5 border border-white/10 p-6 rounded-xl hover:border-emerald-500/50 transition-colors">
+                    <div class="w-12 h-12 bg-emerald-950 rounded-lg flex items-center justify-center text-emerald-400 text-xl font-bold mb-4">01</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Tailored Workout Plans</h3>
+                    <p class="text-gray-400 text-sm">Customized resistance and hypertrophy protocols built around your equipment access and schedule.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-6 rounded-xl hover:border-amber-500/50 transition-colors">
+                    <div class="w-12 h-12 bg-amber-950 rounded-lg flex items-center justify-center text-amber-400 text-xl font-bold mb-4">02</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Personalized Nutrition</h3>
+                    <p class="text-gray-400 text-sm">Macros tailored specifically for muscle building or aggressive fat loss without extreme restriction.</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-6 rounded-xl hover:border-emerald-500/50 transition-colors">
+                    <div class="w-12 h-12 bg-emerald-950 rounded-lg flex items-center justify-center text-emerald-400 text-xl font-bold mb-4">03</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Direct 1-on-1 Guidance</h3>
+                    <p class="text-gray-400 text-sm">Weekly check-ins, form adjustments, and constant accountability directly via WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-white/10 text-center text-xs text-gray-500 px-6">
+        <p>© 2026 Ermiyas Zewude (@ermiyaszewude). All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal 1: INTAKE MODAL -->
+    <div id="intakeModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-[#101412] border border-emerald-500/30 rounded-2xl p-6 sm:p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform duration-300 text-white">
+            <button onclick="closeModal('intakeModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="text-emerald-400 font-semibold text-xs tracking-widest uppercase">Start Today</span>
+                <h3 class="text-2xl font-bold font-display uppercase text-white mt-1">Transform Your Physique</h3>
+                <p class="text-gray-400 text-xs mt-1">Fill out this quick form or reach out directly on WhatsApp.</p>
+            </div>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Your Full Name</label>
+                    <input type="text" required placeholder="e.g. Abebe Bikila" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Phone Number / WhatsApp</label>
+                    <input type="tel" required placeholder="e.g. 0920713435" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-1">Primary Fitness Goal</label>
+                    <select class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500">
+                        <option value="muscle">Build Muscle & Bulk</option>
+                        <option value="fatloss">Fat Loss & Shredding</option>
+                        <option value="contest">Contest Preparation</option>
+                        <option value="recomp">Body Recomposition</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-emerald-700 hover:bg-emerald-600 font-bold text-xs uppercase tracking-widest rounded-lg transition-colors shadow-lg mt-2">
+                    Submit Application
+                </button>
+            </form>
+
+            <div class="mt-6 pt-4 border-t border-white/10 text-center">
+                <p class="text-xs text-gray-400 mb-2">Prefer instant chat?</p>
+                <a href="https://wa.me/251920713435?text=Hi%20Ermiyas,%20I'm%20interested%20in%20your%20coaching!" target="_blank" class="inline-flex items-center gap-2 text-emerald-400 text-xs font-bold hover:underline">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Chat on WhatsApp (0920713435)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: GET YOUR FREE RESOURCES MODAL -->
+    <div id="resourceModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-[#101412] border border-amber-500/30 rounded-2xl p-6 sm:p-8 max-w-lg w-full relative shadow-2xl transform scale-95 transition-transform duration-300 text-white">
+            <button onclick="closeModal('resourceModal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-3 border border-amber-500/20">
+                    <i class="fa-solid fa-gift text-xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold font-display uppercase text-white">Free Fitness Resources</h3>
+                <p class="text-gray-400 text-xs mt-1">Get instant access to Ermiyas' Starter Workout Guide & Macro Calculator.</p>
+            </div>
+
+            <div class="space-y-3">
+                <a href="#" onclick="downloadResource('Workout Guide')" class="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-file-pdf text-amber-400 text-lg"></i>
+                        <div class="text-left">
+                            <p class="text-sm font-semibold">5-Day Hypertrophy Split Guide</p>
+                            <p class="text-xs text-gray-400">PDF Guide • 2.4 MB</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-download text-gray-400 text-sm"></i>
+                </a>
+
+                <a href="#" onclick="downloadResource('Nutrition Cheat Sheet')" class="flex items-center justify-between p-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-apple-whole text-emerald-400 text-lg"></i>
+                        <div class="text-left">
+                            <p class="text-sm font-semibold">High-Protein Meal Prep Plan</p>
+                            <p class="text-xs text-gray-400">PDF Guide • 1.8 MB</p>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-download text-gray-400 text-sm"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-emerald-600 text-white px-5 py-3 rounded-lg shadow-2xl flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-300 z-50 text-xs font-semibold">
+        <i class="fa-solid fa-circle-check text-base"></i>
+        <span id="toastMsg">Action completed successfully!</span>
+    </div>
+
+    <script>
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-95');
+            modal.querySelector('div').classList.add('scale-100');
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.querySelector('div').classList.remove('scale-100');
+            modal.querySelector('div').classList.add('scale-95');
+        }
+
+        function scrollToDetails() {
+            document.getElementById('details').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            closeModal('intakeModal');
+            showToast("Application submitted! Ermiyas will contact you on WhatsApp.");
+        }
+
+        function downloadResource(name) {
+            showToast("Downloading " + name + "...");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
